@@ -40,7 +40,7 @@ void default_settings(){
 
 }
 
-void save_setting(std:: string key, char value){
+void save_setting(){
     for(int i; i <= 8; i++){
         std::cout<<button_map[buttons[i]];
     };
@@ -58,18 +58,18 @@ void load_settings(){
     MyFile.close();
 }
 
+void change_settings(int button_id, char new_button){
+    button_map[buttons[button_id]] = new_button;
+    std:: cout<<std::endl<<"The "<<buttons[button_id]<<" button was changed to: "<<new_button;
+}
+
 void show_settings(){
     for(int i = 0; i < 8; i++){
         std::cout<<buttons[i]<<": "<<button_map[buttons[i]]<<std::endl;
     }
 }
 
-
 void color_checker_position_setter(){
-
-}
-
-void change_settings(){
 
 }
 
@@ -77,15 +77,64 @@ void hunt_loop(){
 
 }
 
+void setting_change_message(int id){
+    std:: cout<<std::endl<<"To what you want to change "<<buttons[id]<<" button? (Now it is: "<<button_map[buttons[id]]<<")"<<std::endl;
+}
+
+void setting_menu(){
+    int answer;
+    char new_button;
+    std:: cout<<std::endl<<"-----Pokemon fire red/leaf green shiny hunter-----"<<std::endl;
+    std:: cout<<std::endl<<"Which setting you want to change?        "<<std::endl;
+    for(int i = 0; i < 8; i++){
+        std:: cout<<"("<<i + 1<<") "<<buttons[i]<<std::endl;
+    }
+    std:: cin >> answer;
+
+    switch (answer)
+    {
+    case 1:
+        setting_change_message(0);
+        std::cout<<"What new "<<buttons[0]<<" button: ";
+        std::cin>>new_button;
+        change_settings(0,new_button);
+        break;
+    case 2:
+        /* code */
+        break;
+    case 3:
+        /* code */
+        break;
+    case 4:
+        /* code */
+        break;
+    case 5:
+        /* code */
+        break;
+    case 6:
+        /* code */
+        break;
+    case 7:
+        /* code */
+        break;
+    case 8:
+        /* code */
+        break;
+    
+             
+    default:
+    std:: cout<<std:: endl<< "ERROR!" << std:: endl;
+        break;
+    }
+}
+
 int main(){
     std:: cout<<std::endl<<"-----Pokemon fire red/leaf green shiny hunter-----"<<std::endl;
     std:: cout<<"(1) Start program"<<std::endl;
     std:: cout<<"(2) Setup program"<<std::endl;
     std:: cout<<"(3) Check settings"<<std::endl;
-    default_settings();
-    show_settings();
-    load_settings();
-    show_settings();
+    std:: cout<<"(4) change settings"<<std::endl;
+    setting_menu();
 
 
     return 0;
