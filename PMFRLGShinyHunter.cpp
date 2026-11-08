@@ -41,9 +41,11 @@ void default_settings(){
 }
 
 void save_setting(){
-    for(int i; i <= 8; i++){
-        std::cout<<button_map[buttons[i]];
-    };
+    std:: fstream MyFile("settings.txt");
+    for(int i = 0; i < 8; i++){
+        MyFile<<button_map[buttons[i]]<<std::endl;
+    }
+    MyFile.close();
 }
 
 void load_settings(){
@@ -61,6 +63,7 @@ void load_settings(){
 void change_settings(int button_id, char new_button){
     button_map[buttons[button_id]] = new_button;
     std:: cout<<std::endl<<"The "<<buttons[button_id]<<" button was changed to: "<<new_button;
+    save_setting();
 }
 
 void show_settings(){
@@ -93,39 +96,58 @@ void setting_menu(){
 
     switch (answer)
     {
-    case 1:
-        setting_change_message(0);
-        std::cout<<"What new "<<buttons[0]<<" button: ";
-        std::cin>>new_button;
-        change_settings(0,new_button);
-        break;
-    case 2:
-        /* code */
-        break;
-    case 3:
-        /* code */
-        break;
-    case 4:
-        /* code */
-        break;
-    case 5:
-        /* code */
-        break;
-    case 6:
-        /* code */
-        break;
-    case 7:
-        /* code */
-        break;
-    case 8:
-        /* code */
-        break;
-    
-             
-    default:
-    std:: cout<<std:: endl<< "ERROR!" << std:: endl;
-        break;
-    }
+        case 1:
+            setting_change_message(answer - 1);
+            std::cout<<"What new "<<buttons[answer - 1]<<" button: ";
+            std::cin>>new_button;
+            change_settings(answer - 1,new_button);
+            break;
+        case 2:
+            setting_change_message(answer - 1);
+            std::cout<<"What new "<<buttons[answer - 1]<<" button: ";
+            std::cin>>new_button;
+            change_settings(answer - 1,new_button);
+            break;
+        case 3:
+            setting_change_message(answer - 1);
+            std::cout<<"What new "<<buttons[answer - 1]<<" button: ";
+            std::cin>>new_button;
+            change_settings(answer - 1,new_button);
+            break;
+        case 4:
+            setting_change_message(answer - 1);
+            std::cout<<"What new "<<buttons[answer - 1]<<" button: ";
+            std::cin>>new_button;
+            change_settings(answer - 1,new_button);
+            break;
+        case 5:
+            setting_change_message(answer - 1);
+            std::cout<<"What new "<<buttons[answer - 1]<<" button: ";
+            std::cin>>new_button;
+            change_settings(answer - 1,new_button);
+            break;
+        case 6:
+            setting_change_message(answer - 1);
+            std::cout<<"What new "<<buttons[answer - 1]<<" button: ";
+            std::cin>>new_button;
+            change_settings(answer - 1,new_button);
+            break;
+        case 7:
+            setting_change_message(answer - 1);
+            std::cout<<"What new "<<buttons[answer - 1]<<" button: ";
+            std::cin>>new_button;
+            change_settings(answer - 1,new_button);
+            break;
+        case 8:
+            setting_change_message(answer - 1);
+            std::cout<<"What new "<<buttons[answer - 1]<<" button: ";
+            std::cin>>new_button;
+            change_settings(answer - 1,new_button);
+            break;  
+        default:
+            std:: cout<<std:: endl<< "ERROR!" << std:: endl;
+            break;
+        }
 }
 
 int main(){
@@ -134,6 +156,7 @@ int main(){
     std:: cout<<"(2) Setup program"<<std::endl;
     std:: cout<<"(3) Check settings"<<std::endl;
     std:: cout<<"(4) change settings"<<std::endl;
+    load_settings();
     setting_menu();
 
 
